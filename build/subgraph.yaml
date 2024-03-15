@@ -2,7 +2,7 @@ specVersion: 1.0.0
 indexerHints:
   prune: auto
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: LowSecTimelock
@@ -26,7 +26,7 @@ dataSources:
         - RoleRevoked
       abis:
         - name: LowSecTimelock
-          file: ./abis/LowSecTimelock.json
+          file: LowSecTimelock/abis/LowSecTimelock.json
       eventHandlers:
         - event: CallExecuted(indexed bytes32,indexed uint256,address,uint256,bytes)
           handler: handleCallExecuted
@@ -45,7 +45,7 @@ dataSources:
           handler: handleRoleGranted
         - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
           handler: handleRoleRevoked
-      file: ./src/low-sec-timelock.ts
+      file: LowSecTimelock/LowSecTimelock.wasm
   - kind: ethereum
     name: HighSecTimelock
     network: mainnet
@@ -68,7 +68,7 @@ dataSources:
         - HighSecTimelockRoleRevoked
       abis:
         - name: HighSecTimelock
-          file: ./abis/HighSecTimelock.json
+          file: HighSecTimelock/abis/HighSecTimelock.json
       eventHandlers:
         - event: CallExecuted(indexed bytes32,indexed uint256,address,uint256,bytes)
           handler: handleCallExecuted
@@ -87,4 +87,4 @@ dataSources:
           handler: handleRoleGranted
         - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
           handler: handleRoleRevoked
-      file: ./src/high-sec-timelock.ts
+      file: HighSecTimelock/HighSecTimelock.wasm
